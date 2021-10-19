@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 });
 
 router.post("/", (req, res) => {
-    var sql = "SELECT * FROM tb_master_user_role";
+    var sql = "SELECT a.*, b.role_name FROM tb_master_user a JOIN tb_master_user_role b ON (a.role = b.id)";
     pgsql.query(sql, (e, r) => {
         if(e) {
             res.json({
